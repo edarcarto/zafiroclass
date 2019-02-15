@@ -58,24 +58,15 @@ class App extends Component {
     let persons = null; // declaro una variable
     if (this.state.showPersons) {
       // si showPersons es verdad inserto HTML sino es nulo
+      // recorremos el estado persons con map y retornamos el componente
       persons = (
         <div >
-          <Person
-            name={this.state.persons[0].name}
-            age={this.state.persons[0].age}
-          />
-          <Person
-            name={this.state.persons[1].name}
-            age={this.state.persons[1].age}
-            click={this.switchNameHandler.bind(this, "Isai!")}
-            changed={this.nameChangedHandler}
-          >
-            Hobbies: Tocar guitarra
-            </Person>
-          <Person
-            name={this.state.persons[2].name}
-            age={this.state.persons[2].age}
-          />
+          {this.state.persons.map(person => {
+            return <Person
+              name={person.name}
+              age={person.age}
+            />
+          })}
         </div>
       );
     }
@@ -85,7 +76,7 @@ class App extends Component {
         <button
           style={style}
           onClick={this.togglePersonHandler}>Mostar Personas</button>
-          {/* Muestro lo que contiene la variable persons */}
+        {/* Muestro lo que contiene la variable persons */}
         {persons}
       </div>
     );
