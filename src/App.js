@@ -15,19 +15,6 @@ class App extends Component {
     showPersons: false
   }
 
-  //declarar un función para botón (arrow function)
-  switchNameHandler = (namePerson) => { // ocurrira en el evento click
-    // console.log("Was clicked")
-    // NO UTILICES ESO PARA CAMBIAR AL STATE this.state.persons[2].name = "Eduardo"
-    this.setState({ // utilizamos setState para cambiar un state y recibe un objeto
-      persons: [ //copiamos el array y cambiamos solo donde queremos
-        { name: 'Gaby', age: 19 },
-        { name: 'Danny', age: 25 },
-        { name: namePerson, age: 24 } // cambie Efren a Eduardo
-      ]
-    })
-  }
-
   //crearemos una otra funcion para cambiar el item 1 por medio de un input 
   nameChangedHandler = (event) => {
     this.setState({
@@ -43,6 +30,16 @@ class App extends Component {
     const doesShow = this.state.showPersons;
     // porque !doesShow ? porque si es true se cambia por falso y viceversa
     this.setState({ showPersons: !doesShow });
+  }
+
+  //funcion para eliminar personas
+  deletePersonHandler = (personIndex) =>{
+    // almaceno el state en una variable
+    const persons = this.state.persons
+    // funcion splice elimina un item de array segun el index
+    persons.splice(personIndex, 1);
+    // actualizo el state
+    this.setState({persons : persons});
   }
 
   render() {
@@ -61,8 +58,9 @@ class App extends Component {
       // recorremos el estado persons con map y retornamos el componente
       persons = (
         <div >
-          {this.state.persons.map(person => {
+          {this.state.persons.map((person, index) => {
             return <Person
+              click={() => this.deletePersonHandler(index)}
               name={person.name}
               age={person.age}
             />
