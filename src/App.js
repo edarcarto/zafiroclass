@@ -39,12 +39,22 @@ class App extends Component {
   }
 
   render() {
+    // estilo en variale
+    const style = {
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+    }
     return (
       <div className="App">
         <p>Trabajando con Reactjs</p>
         {/* No uses los parentesis al llamarlo lo ejecuras si haces eso */}
-        <button onClick={() => this.switchNameHandler('Eduardo') }>Cambiar de Nombre</button>
-        <Person 
+        <button 
+          style={style} 
+          onClick={() => this.switchNameHandler('Eduardo') }>Cambiar de Nombre</button>
+        <Person
           name={this.state.persons[0].name} 
           age={this.state.persons[0].age} 
         />
