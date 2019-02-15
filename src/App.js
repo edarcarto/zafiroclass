@@ -12,11 +12,18 @@ class App extends Component {
       { name : 'Efren', age: 24 }
     ]
   }
+
+  //declarar un función para botón (arrow function)
+  switchNameHandler = () => {
+    console.log("Was clicked")
+  }
+
   render() {
     return (
       <div className="App">
         <p>Trabajando con Reactjs</p>
-        <button>Cambiar de Nombre</button>
+        {/* No uses los parentesis al llamarlo lo ejecuras si haces eso */}
+        <button onClick={this.switchNameHandler}>Cambiar de Nombre</button>
         <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
         <Person name={this.state.persons[1].name} age={this.state.persons[1].age} >
           Hobbies: Tocar guitarra
