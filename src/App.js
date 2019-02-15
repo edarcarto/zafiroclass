@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Person from './Person/Person'
 
@@ -8,7 +7,11 @@ class App extends Component {
     return (
       <div className="App">
         <p>Trabajando con Reactjs</p>
-        <Person />
+        <Person name="Gaby" age="19" />
+        <Person name="Danny" age="25">
+          Hobbies: : Tocar guitarra
+        </Person>
+        <Person name="Efren" age="24"/>
       </div>
     );
   }
