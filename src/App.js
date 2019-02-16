@@ -71,9 +71,10 @@ class App extends Component {
   }
 
   render() {
-    // estilo en variale
+    // hacer un boton con estilos dinamicos
     const style = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
+      color: 'white',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
@@ -100,6 +101,8 @@ class App extends Component {
           })}
         </div>
       );
+      // aqui cambiaremos el color del boton si está activo o no
+      style.backgroundColor = 'red';
     }
     return (
       <div className="App">
