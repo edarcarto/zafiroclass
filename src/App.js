@@ -104,9 +104,12 @@ class App extends Component {
       // aqui cambiaremos el color del boton si está activo o no
       style.backgroundColor = 'red';
     }
+
+    let classes = ['red','bold'].join(' '); // red bold
+
     return (
       <div className="App">
-        <p>Trabajando con Reactjs</p>
+        <p className={classes}>Trabajando con Reactjs</p>
         <button
           style={style}
           onClick={this.togglePersonHandler}>Mostar Personas</button>
