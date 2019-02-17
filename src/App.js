@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person'
-import Raidum from 'radium'
+import Raidum, { StyleRoot } from 'radium'
 
 class App extends Component {
   // llamar a state es una variable especial de Component
@@ -117,14 +117,18 @@ class App extends Component {
     let classes = ['red','bold'].join(' '); // red bold
 
     return (
-      <div className="App">
-        <p className={classes}>Trabajando con Reactjs</p>
-        <button
-          style={style}
-          onClick={this.togglePersonHandler}>Mostar Personas</button>
-        {/* Muestro lo que contiene la variable persons */}
-        {persons}
-      </div>
+      // aqui importaremos StyleRoot como si se tratase de una etiqueta html
+      // ya que styleroot es un component
+      <StyleRoot>
+        <div className="App">
+          <p className={classes}>Trabajando con Reactjs</p>
+          <button
+            style={style}
+            onClick={this.togglePersonHandler}>Mostar Personas</button>
+          {/* Muestro lo que contiene la variable persons */}
+          {persons}
+        </div>
+      </StyleRoot>
     );
   }
 }
