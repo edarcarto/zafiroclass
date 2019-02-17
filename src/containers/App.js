@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classes from './App.css';
-import Person from '../components/Persons/Person/Person'
+import Persons from '../components/Persons/Persons'
 // Para la unidad 14 debemos eliminar radium y usar npm run eject
 class App extends Component {
   // llamar a state es una variable especial de Component
@@ -81,17 +81,10 @@ class App extends Component {
       // la documentacion dice que cada componente dentro de un array
       // recorrido debe tener key
       persons = (
-        <div >
-          {this.state.persons.map((person, index) => {
-            return <Person
-              click={() => this.deletePersonHandler(index)}
-              name={person.name}
-              age={person.age}
-              key={person.id}
-              changed={(event) => this.nameChangedHandler(event, person.id)}
-            />
-          })}
-        </div>
+        <Persons 
+        persons={this.state.persons}
+        clicked={this.deletePersonHandler}
+        changed={this.nameChangedHandler}/>
       );
 
       btnClass = classes.Red
