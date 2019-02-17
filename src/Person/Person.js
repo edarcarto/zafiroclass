@@ -1,6 +1,7 @@
 import React from 'react';
 import './Person.css'; // importas el css que quieras usar
-//
+import Radium from 'radium';
+
 const person = ( props ) => {
     return (
         <div className="Person"> {/* El atributo className es para asignar clases */}
@@ -12,4 +13,4 @@ const person = ( props ) => {
     )
 }
 
-export default person;
+export default Radium(person);

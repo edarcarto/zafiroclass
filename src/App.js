@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person'
+import Raidum from 'radium'
 
 class App extends Component {
   // llamar a state es una variable especial de Component
@@ -78,7 +79,11 @@ class App extends Component {
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer'
+      cursor: 'pointer', // estoy usando radium para hover
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black',
+      }
     }
     // otra forma de validar trabajando con data dinamica
     let persons = null; // declaro una variable
@@ -101,8 +106,12 @@ class App extends Component {
           })}
         </div>
       );
-      // aqui cambiaremos el color del boton si está activo o no
+      // estamos usando radium para utilizar el selector :hover
       style.backgroundColor = 'red';
+      style[':hover'] = {
+        backgroundColor: 'salmon',
+        color: 'black',
+      }
     }
 
     let classes = ['red','bold'].join(' '); // red bold
@@ -120,4 +129,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Raidum(App);
