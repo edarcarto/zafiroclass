@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classes from './App.css';
 import Person from './Person/Person'
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
 // Para la unidad 14 debemos eliminar radium y usar npm run eject
 class App extends Component {
   // llamar a state es una variable especial de Component
@@ -83,13 +84,14 @@ class App extends Component {
       persons = (
         <div >
           {this.state.persons.map((person, index) => {
-            return <Person
-              click={() => this.deletePersonHandler(index)}
-              name={person.name}
-              age={person.age}
-              key={person.id}
-              changed={(event) => this.nameChangedHandler(event, person.id)}
-            />
+            return <ErrorBoundary key={person.id}>
+              <Person
+                click={() => this.deletePersonHandler(index)}
+                name={person.name}
+                age={person.age}
+                changed={(event) => this.nameChangedHandler(event, person.id)}
+              />
+            </ErrorBoundary>
           })}
         </div>
       );
@@ -105,6 +107,7 @@ class App extends Component {
         <button
           className={btnClass}
           onClick={this.togglePersonHandler}>Mostar Personas</button>
+        <hr />
         {/* Muestro lo que contiene la variable persons */}
         {persons}
       </div>
