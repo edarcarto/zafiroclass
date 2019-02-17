@@ -71,17 +71,9 @@ class App extends Component {
   }
 
   render() {
-    // hacer un boton con estilos dinamicos
-    const style = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer'
-    }
     // otra forma de validar trabajando con data dinamica
     let persons = null; // declaro una variable
+    let btnClass = '';
     if (this.state.showPersons) {
       // si showPersons es verdad inserto HTML sino es nulo
       // recorremos el estado persons con map y retornamos el componente
@@ -101,7 +93,8 @@ class App extends Component {
           })}
         </div>
       );
-      style.backgroundColor = 'red';
+
+      btnClass = classes.Red
     }
 
     let asignClasses = [classes.red, classes.bold].join(' '); // red bold
@@ -110,7 +103,7 @@ class App extends Component {
       <div className={classes.App}>
         <p className={asignClasses}>Trabajando con Reactjs</p>
         <button
-          style={style}
+          className={btnClass}
           onClick={this.togglePersonHandler}>Mostar Personas</button>
         {/* Muestro lo que contiene la variable persons */}
         {persons}
