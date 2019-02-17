@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classes from './App.css';
 import Persons from '../components/Persons/Persons'
+import Cockpit from '../components/Cockpit/Cockpit';
 // Para la unidad 14 debemos eliminar radium y usar npm run eject
 class App extends Component {
   // llamar a state es una variable especial de Component
@@ -73,7 +74,6 @@ class App extends Component {
   render() {
     // otra forma de validar trabajando con data dinamica
     let persons = null; // declaro una variable
-    let btnClass = '';
     if (this.state.showPersons) {
       // si showPersons es verdad inserto HTML sino es nulo
       // recorremos el estado persons con map y retornamos el componente
@@ -86,18 +86,14 @@ class App extends Component {
         clicked={this.deletePersonHandler}
         changed={this.nameChangedHandler}/>
       );
-
-      btnClass = classes.Red
     }
-
-    let asignClasses = [classes.red, classes.bold].join(' '); // red bold
 
     return (
       <div className={classes.App}>
-        <p className={asignClasses}>Trabajando con Reactjs</p>
-        <button
-          className={btnClass}
-          onClick={this.togglePersonHandler}>Mostar Personas</button>
+      <Cockpit 
+        showPersons={this.state.showPersons}
+        persons={this.state.persons}
+        clicked={this.togglePersonHandler} />
         {/* Muestro lo que contiene la variable persons */}
         {persons}
       </div>
