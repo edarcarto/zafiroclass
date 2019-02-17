@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classes from './App.css';
-import Person from './Person/Person'
+import Person from '../components/Persons/Person/Person'
 // Para la unidad 14 debemos eliminar radium y usar npm run eject
 class App extends Component {
   // llamar a state es una variable especial de Component
