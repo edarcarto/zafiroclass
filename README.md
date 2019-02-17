@@ -71,3 +71,8 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 ### UNITY 12
 
 Usando el paquete raidum https://www.npmjs.com/package/radium
+
+### UNITY 13
+
+Hemos quitado el paquete de Raidum para poder usas css modules
+en la consola pon : npm run eject y luego pones y

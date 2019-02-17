@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person'
-import Raidum, { StyleRoot } from 'radium'
-
+// Para la unidad 14 debemos eliminar radium y usar npm run eject
 class App extends Component {
   // llamar a state es una variable especial de Component
   // state es un objeto y se le pueden agregar elementos
   state = {
     // agrefamos id
     persons: [ //agregare persona
-      { id:'001' , name: 'Gaby', age: 19 },
-      { id:'002' , name: 'Danny', age: 25 },
-      { id:'003' , name: 'Efren', age: 24 }
+      { id: '001', name: 'Gaby', age: 19 },
+      { id: '002', name: 'Danny', age: 25 },
+      { id: '003', name: 'Efren', age: 24 }
     ],
     otherState: 'tipo candena',
     showPersons: false
@@ -51,24 +50,24 @@ class App extends Component {
   }
 
   //funcion para eliminar personas
-  deletePersonHandler = (personIndex) =>{
+  deletePersonHandler = (personIndex) => {
     // almaceno el state en una variable
     const persons = this.state.persons
     // funcion splice elimina un item de array segun el index
     persons.splice(personIndex, 1);
     // actualizo el state
-    this.setState({persons : persons});
+    this.setState({ persons: persons });
   }
 
   //Eliminando un array inmutable
-  deletePersonHandler = (personIndex) =>{
+  deletePersonHandler = (personIndex) => {
     // almaceno el state en una variable
     // const persons = this.state.persons
     const persons = [...this.state.persons]
     // funcion splice elimina un item de array segun el index
     persons.splice(personIndex, 1);
     // actualizo el state
-    this.setState({persons : persons});
+    this.setState({ persons: persons });
   }
 
   render() {
@@ -79,11 +78,7 @@ class App extends Component {
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer', // estoy usando radium para hover
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black',
-      }
+      cursor: 'pointer'
     }
     // otra forma de validar trabajando con data dinamica
     let persons = null; // declaro una variable
@@ -101,36 +96,27 @@ class App extends Component {
               name={person.name}
               age={person.age}
               key={person.id}
-              changed={ (event) => this.nameChangedHandler(event, person.id ) }
+              changed={(event) => this.nameChangedHandler(event, person.id)}
             />
           })}
         </div>
       );
-      // estamos usando radium para utilizar el selector :hover
       style.backgroundColor = 'red';
-      style[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black',
-      }
     }
 
-    let classes = ['red','bold'].join(' '); // red bold
+    let classes = ['red', 'bold'].join(' '); // red bold
 
     return (
-      // aqui importaremos StyleRoot como si se tratase de una etiqueta html
-      // ya que styleroot es un component
-      <StyleRoot>
-        <div className="App">
-          <p className={classes}>Trabajando con Reactjs</p>
-          <button
-            style={style}
-            onClick={this.togglePersonHandler}>Mostar Personas</button>
-          {/* Muestro lo que contiene la variable persons */}
-          {persons}
-        </div>
-      </StyleRoot>
+      <div className="App">
+        <p className={classes}>Trabajando con Reactjs</p>
+        <button
+          style={style}
+          onClick={this.togglePersonHandler}>Mostar Personas</button>
+        {/* Muestro lo que contiene la variable persons */}
+        {persons}
+      </div>
     );
   }
 }
 
-export default Raidum(App);
+export default App;
