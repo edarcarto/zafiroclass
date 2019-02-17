@@ -6,11 +6,9 @@
     padding: 16px;
     text-align: center;
 }
-/**
-Normalmente uno uliza media querys de la siguiete manera
+
 @media(min-width: 500px) {
     .Person{
         width: 450px;
     }
 }
-*/
