@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 import Person from './Person/Person'
 // Para la unidad 14 debemos eliminar radium y usar npm run eject
 class App extends Component {
@@ -104,11 +104,11 @@ class App extends Component {
       style.backgroundColor = 'red';
     }
 
-    let classes = ['red', 'bold'].join(' '); // red bold
+    let asignClasses = [classes.red, classes.bold].join(' '); // red bold
 
     return (
-      <div className="App">
-        <p className={classes}>Trabajando con Reactjs</p>
+      <div className={classes.App}>
+        <p className={asignClasses}>Trabajando con Reactjs</p>
         <button
           style={style}
           onClick={this.togglePersonHandler}>Mostar Personas</button>
