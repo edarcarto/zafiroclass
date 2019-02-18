@@ -23,7 +23,8 @@ class App extends Component {
     otherState: 'tipo candena',
     showPersons: false,
     showCockpit: true,
-    changeCounter: 0
+    changeCounter: 0,
+    authenticated: false
   }
   // clase statica del ciclo de vida reactjs getDerivedStateFromProps
   // Este metodo sustituye a componentWillMountReciveProps
@@ -113,6 +114,11 @@ class App extends Component {
     this.setState({ persons: persons });
   }
 
+  // funcion para login
+  loginHandler = () => {
+    this.setState({ authenticated: true })
+  }
+
   render() {
     console.log('[App.js] render');
     // otra forma de validar trabajando con data dinamica
@@ -127,7 +133,8 @@ class App extends Component {
         <Persons 
         persons={this.state.persons}
         clicked={this.deletePersonHandler}
-        changed={this.nameChangedHandler}/>
+        changed={this.nameChangedHandler}
+        isAuthenticated={this.state.authenticated} />
       );
     }
 
@@ -138,7 +145,8 @@ class App extends Component {
         title={this.props.appTitle} 
         showPersons={this.state.showPersons}
         persons={this.state.persons}
-        clicked={this.togglePersonHandler} /> : null }
+        clicked={this.togglePersonHandler}
+        login={this.loginHandler} /> : null }
         {/* Muestro lo que contiene la variable persons */}
         {persons}
       </Aux>
