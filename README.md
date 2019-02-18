@@ -1,6 +1,7 @@
 ### UNITY 15
 
 Vamos a ver estructuras y buenas practicas
+
 [App]
     -[config]
     -[node_modules]
@@ -28,3 +29,14 @@ Vamos a ver estructuras y buenas practicas
     - .gitignore
     - package.json
     - README.md
+
+## Ciclo de vida de un componente
+constructor()
+
+getDerivedStateFromProps() - ShouldComponentUpdate()
+getSnapshotBeforeUpdate() - ComponentDidUpdate()
+componentDidCatch() - componentDidMont()
+componentWillUnmount() - render()
+
+## Creación
+constructor(props) //ES6 => getDerivedStateFromProps(props,state) => render() => componentDidMont()

@@ -4,6 +4,11 @@ import Persons from '../components/Persons/Persons'
 import Cockpit from '../components/Cockpit/Cockpit';
 // Para la unidad 14 debemos eliminar radium y usar npm run eject
 class App extends Component {
+  // vamosa a llamar al constructor
+  constructor(props) {
+    super(props);
+    console.log('[App.js] constructor');
+  }
   // llamar a state es una variable especial de Component
   // state es un objeto y se le pueden agregar elementos
   state = {
@@ -16,7 +21,21 @@ class App extends Component {
     otherState: 'tipo candena',
     showPersons: false
   }
+  // clase statica del ciclo de vida reactjs getDerivedStateFromProps
+  static getDerivedStateFromProps(props, state) {
+    console.log('[App.js] getDerivedStateFromProps', props);
+    return state;
+  }
 
+  //ciclo de vida componentWillMount
+  componentWillMount() {
+    console.log('[App.js] componentWillMount');
+  }
+
+  // ciclo de vida componentDidMount
+  componentDidMount() {
+    console.log('[App.js] componentDidMount');
+  }
   //Ahora esta función cambiara los nombres de cada elemento cuando
   // escribas algo en el input
   nameChangedHandler = (event, id) => {
@@ -72,6 +91,7 @@ class App extends Component {
   }
 
   render() {
+    console.log('[App.js] render');
     // otra forma de validar trabajando con data dinamica
     let persons = null; // declaro una variable
     if (this.state.showPersons) {
@@ -90,7 +110,8 @@ class App extends Component {
 
     return (
       <div className={classes.App}>
-      <Cockpit 
+      <Cockpit
+        title={this.props.appTitle} 
         showPersons={this.state.showPersons}
         persons={this.state.persons}
         clicked={this.togglePersonHandler} />
