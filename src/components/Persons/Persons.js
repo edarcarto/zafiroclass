@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Person from './Person/Person';
 
-class Persons extends Component {
+class Persons extends PureComponent {
     // clase statica del ciclo de vida reactjs getDerivedStateFromProps
     // static getDerivedStateFromProps(props, state) {
     // console.log('[Persons.js] getDerivedStateFromProps', props);
@@ -14,18 +14,18 @@ class Persons extends Component {
 
     // Metodo shouldComponentUpdate para actulizar por lo general 
     // devuelve un boleano (true, false)
-    shouldComponentUpdate(nextProps, nextState) {
-        console.log('[Persons.js] shouldComponentUpdate');
-        if(
-            nextProps.persons !== this.props.persons ||
-            nextProps.changed !== this.props.changed ||
-            nextProps.clicked !== this.props.clicked
-        ) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     console.log('[Persons.js] shouldComponentUpdate');
+    //     if(
+    //         nextProps.persons !== this.props.persons ||
+    //         nextProps.changed !== this.props.changed ||
+    //         nextProps.clicked !== this.props.clicked
+    //     ) {
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
 
     // Metodo getSnapshotBeforeUpdate se ejecuta despues del render y antes de componentDidUpdate
     // el valor regresa la ejecucion de este método se convirte en el tercer parametro llamado snarshot
