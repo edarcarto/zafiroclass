@@ -1,45 +1,6 @@
-### UNITY 15
+### UNITY 16
 
-Vamos a ver estructuras y buenas practicas
-
-[App]
-    -[config]
-    -[node_modules]
-    -[public]
-    -[scripts]
-    -[src]
-        -[assets]
-            -[contains]
-        -[components]
-            -[Cockpit]
-                - Cockpit.js
-            -[Persons]
-                -[Person]
-                    - Person.js
-                    - Person.css
-                - Persons.js
-        -[containers]
-            - App.js
-            - App.css
-            - App.test.js
-        - index.css
-        - index.js
-        - logo.svg
-        - serviceWorker.svg
-    - .gitignore
-    - package.json
-    - README.md
-
-## Ciclo de vida de un componente
-constructor()
-
-getDerivedStateFromProps() - ShouldComponentUpdate()
-getSnapshotBeforeUpdate() - ComponentDidUpdate()
-componentDidCatch() - componentDidMont()
-componentWillUnmount() - render()
-
-## Creación
-constructor(props) //ES6 => getDerivedStateFromProps(props,state) => render() => componentDidMont()
-
-## Actualizacion
-getDerivedStateFromProps(props,state) => ShouldComponentUpdate(nextProps, nextState) => render() => update components childs => getSnapshotBeforeUpdate() => ComponentDidUpdate()
+## Como pasar props
+## Como pasar states 
+## instalar la librería npm install --save prop-types
+Esta librería es para validar el tipo de archivo que mandas a los componentes, al ser muy grandes los componentes corres riesgo que al pasar mal el parametro en algún lugar se caiga. Al poner el prop te mandará un warning.
