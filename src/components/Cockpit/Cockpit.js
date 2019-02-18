@@ -1,7 +1,12 @@
-import React from 'react';
+import React,{ useEffect } from 'react';
 import classes from './Cockpit.css';
 
 const cockpit = (props) => {
+    // agregando el cliclo de vida useEffect para componentes funcionales
+    useEffect(() => {
+        console.log('[cockpit.js] useEffect')
+    })
+
     let asignClasses = [];
     let btnClass = '';
     if(props.showPersons){
