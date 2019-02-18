@@ -22,17 +22,24 @@ class App extends Component {
     showPersons: false
   }
   // clase statica del ciclo de vida reactjs getDerivedStateFromProps
+  // Este metodo sustituye a componentWillMountReciveProps
+  // se llama despues de que el componente sea instanciado
+  // Habilita un componente a actualizarse e internamente el resultado
+  // lo cambia en props
   static getDerivedStateFromProps(props, state) {
     console.log('[App.js] getDerivedStateFromProps', props);
     return state;
   }
 
-  //ciclo de vida componentWillMount
-  componentWillMount() {
-    console.log('[App.js] componentWillMount');
-  }
+  // ciclo de vida componentWillMount
+  // Este metodo se utiliza antes del primer renderizado
+  // componentWillMount() {
+  //  console.log('[App.js] componentWillMount');
+  // }
 
   // ciclo de vida componentDidMount
+  // Este metodo se utiliza despues del primer renderizado
+  // puedes usarlo para llamar ajax, setear intervalos etc
   componentDidMount() {
     console.log('[App.js] componentDidMount');
   }

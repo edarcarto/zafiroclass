@@ -40,3 +40,6 @@ componentWillUnmount() - render()
 
 ## Creación
 constructor(props) //ES6 => getDerivedStateFromProps(props,state) => render() => componentDidMont()
+
+## Actualizacion
+getDerivedStateFromProps(props,state) => ShouldComponentUpdate(nextProps, nextState) => render() => update components childs => getSnapshotBeforeUpdate() => ComponentDidUpdate()
