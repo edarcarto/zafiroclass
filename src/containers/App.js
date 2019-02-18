@@ -43,6 +43,15 @@ class App extends Component {
   componentDidMount() {
     console.log('[App.js] componentDidMount');
   }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('[App.js] shouldComponentUpdate');
+    return true; // si lo cambias a falso el click no funcionará
+  }
+  componentDidUpdate() {
+    console.log('[App.js] componentDidUpdate');
+  }
+
   //Ahora esta función cambiara los nombres de cada elemento cuando
   // escribas algo en el input
   nameChangedHandler = (event, id) => {
