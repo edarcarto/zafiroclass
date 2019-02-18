@@ -16,7 +16,15 @@ class Persons extends Component {
     // devuelve un boleano (true, false)
     shouldComponentUpdate(nextProps, nextState) {
         console.log('[Persons.js] shouldComponentUpdate');
-        return true;
+        if(
+            nextProps.persons !== this.props.persons ||
+            nextProps.changed !== this.props.changed ||
+            nextProps.clicked !== this.props.clicked
+        ) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     // Metodo getSnapshotBeforeUpdate se ejecuta despues del render y antes de componentDidUpdate
