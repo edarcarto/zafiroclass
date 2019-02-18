@@ -22,7 +22,8 @@ class App extends Component {
     ],
     otherState: 'tipo candena',
     showPersons: false,
-    showCockpit: true
+    showCockpit: true,
+    changeCounter: 0
   }
   // clase statica del ciclo de vida reactjs getDerivedStateFromProps
   // Este metodo sustituye a componentWillMountReciveProps
@@ -78,7 +79,8 @@ class App extends Component {
     persons[personIndex] = person;
     // set state actualizamos el state
     this.setState({
-      persons: persons
+      persons: persons,
+      changeCounter: this.changeCounter + 1 // esto es una forma incorrecta de pasar parametros
     })
   }
 
