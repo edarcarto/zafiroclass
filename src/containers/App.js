@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import classes from './App.css';
 import Persons from '../components/Persons/Persons'
 import Cockpit from '../components/Cockpit/Cockpit';
-import WithClass from '../hoc/WithClass';
+import withClass from '../hoc/withClass';
+import Aux from '../hoc/Auxiliary';
 // Para la unidad 14 debemos eliminar radium y usar npm run eject
 class App extends Component {
   // vamosa a llamar al constructor
@@ -127,7 +128,7 @@ class App extends Component {
     }
 
     return (
-      <WithClass classes={classes.App}>
+      <Aux>
       <button onClick={() => this.setState({ showCockpit: false })} >Eliminar Cockpit</button>
       {this.state.showCockpit ? <Cockpit
         title={this.props.appTitle} 
@@ -136,9 +137,9 @@ class App extends Component {
         clicked={this.togglePersonHandler} /> : null }
         {/* Muestro lo que contiene la variable persons */}
         {persons}
-      </WithClass>
+      </Aux>
     );
   }
 }
 
-export default App;
+export default withClass(App,classes.App);
