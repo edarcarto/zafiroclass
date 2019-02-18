@@ -5,12 +5,22 @@ const cockpit = (props) => {
     // agregando el cliclo de vida useEffect para componentes funcionales
     useEffect(() => {
         // por lo general es para manejar http request
-        console.log('[cockpit.js] useEffect')
+        console.log('[cockpit.js] useEffect');
         // ejemplo "simular un http request"
         setTimeout(() => {
             alert('Saved data to cloud');
         },1000); // 1000 milisegundos
+        return () => {
+            console.log('[cockpit.js] Cleanup en useEffect');
+        }
     },[]); // acepta un segundo parametro de tipo array [props.persons]
+
+    useEffect(() => {
+        console.log('[cockpit.js] 2nd useEffect');
+        return () => {
+            console.log('[cockpit.js] 2nd Cleanup en useEffect');
+        }
+    });
 
     // useEffect(); puedes llamar muchos mas
 

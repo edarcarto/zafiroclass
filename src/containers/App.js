@@ -19,7 +19,8 @@ class App extends Component {
       { id: '003', name: 'Efren', age: 24 }
     ],
     otherState: 'tipo candena',
-    showPersons: false
+    showPersons: false,
+    showCockpit: true
   }
   // clase statica del ciclo de vida reactjs getDerivedStateFromProps
   // Este metodo sustituye a componentWillMountReciveProps
@@ -126,11 +127,12 @@ class App extends Component {
 
     return (
       <div className={classes.App}>
-      <Cockpit
+      <button onClick={() => this.setState({ showCockpit: false })} >Eliminar Cockpit</button>
+      {this.state.showCockpit ? <Cockpit
         title={this.props.appTitle} 
         showPersons={this.state.showPersons}
         persons={this.state.persons}
-        clicked={this.togglePersonHandler} />
+        clicked={this.togglePersonHandler} /> : null }
         {/* Muestro lo que contiene la variable persons */}
         {persons}
       </div>
