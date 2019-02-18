@@ -77,10 +77,12 @@ class App extends Component {
     const persons = [...this.state.persons];
     // cambiamos exactamente el indice modificado
     persons[personIndex] = person;
-    // set state actualizamos el state
-    this.setState({
-      persons: persons,
-      changeCounter: this.changeCounter + 1 // esto es una forma incorrecta de pasar parametros
+    // Forma correcta de pasar actualizar datos en el state
+    this.setState((prevState, props) => {
+      return {
+        persons: persons,
+        changeCounter: prevState.changeCounter + 1 // forma correcta de pasar parametros
+      }
     })
   }
 
