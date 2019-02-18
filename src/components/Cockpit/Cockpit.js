@@ -1,10 +1,11 @@
-import React,{ useEffect, useRef } from 'react';
+import React,{ useEffect, useRef, useContext } from 'react';
 import classes from './Cockpit.css';
 import AuthContext from '../../context/auth-context';
 
 const cockpit = (props) => {
     // usando refs en componentes funcionales
     const tootleBtnRef = useRef(null);
+    const authContext = useContext(AuthContext);
 
     // agregando el cliclo de vida useEffect para componentes funcionales
     useEffect(() => {
@@ -49,9 +50,7 @@ const cockpit = (props) => {
                 ref={tootleBtnRef}
                 className={btnClass}
                 onClick={props.clicked}>Mostar Personas</button>
-            <AuthContext.Consumer>
-                { context => <button onClick={context.login }>Log in</button> }
-            </AuthContext.Consumer>
+                <button onClick={authContext.login }>Log in</button>
         </div>
     );
 }
