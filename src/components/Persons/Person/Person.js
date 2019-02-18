@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'; // importamos la nueva librería
 import Aux from '../../../hoc/Auxiliary';
 import withClass from '../../../hoc/withClass';
 import classes from './Person.css'
+import AuthContext from '../../../context/auth-context';
 
 class Person extends Component {
     constructor(props) {
@@ -21,9 +22,12 @@ class Person extends Component {
 
     render() {
         console.log('[Person.js] rendering...');
+        // cuando es consumer permite consumir las variables o funciones del arbol de datos
         return (
             <Aux>
-                {this.props.isAuth ? <p> Authenticated! </p> : <p> please log in</p>}
+                <AuthContext.Consumer>
+                    { context => context.authenticated ? <p> Authenticated! </p> : <p> please log in</p> }
+                </AuthContext.Consumer>
                 <p onClick={this.props.click}>
                     Soy {this.props.name} y tengo {this.props.age} años!
                 </p>

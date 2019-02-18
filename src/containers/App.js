@@ -4,6 +4,8 @@ import Persons from '../components/Persons/Persons'
 import Cockpit from '../components/Cockpit/Cockpit';
 import withClass from '../hoc/withClass';
 import Aux from '../hoc/Auxiliary';
+import AuthContext from '../context/auth-context';
+
 // Para la unidad 14 debemos eliminar radium y usar npm run eject
 class App extends Component {
   // vamosa a llamar al constructor
@@ -137,18 +139,25 @@ class App extends Component {
         isAuthenticated={this.state.authenticated} />
       );
     }
-
+    // cuando context es provider encierra el componente al cual le pasaremos los datos
     return (
       <Aux>
-      <button onClick={() => this.setState({ showCockpit: false })} >Eliminar Cockpit</button>
-      {this.state.showCockpit ? <Cockpit
-        title={this.props.appTitle} 
-        showPersons={this.state.showPersons}
-        persons={this.state.persons}
-        clicked={this.togglePersonHandler}
-        login={this.loginHandler} /> : null }
-        {/* Muestro lo que contiene la variable persons */}
-        {persons}
+        <button onClick={() => this.setState({ showCockpit: false })} >Eliminar Cockpit</button>
+        <AuthContext.Provider 
+          value={{ 
+            authenticated: this.state.authenticated,
+            login: this.loginHandler 
+          }} 
+        >
+          {this.state.showCockpit ? <Cockpit
+            title={this.props.appTitle} 
+            showPersons={this.state.showPersons}
+            persons={this.state.persons}
+            clicked={this.togglePersonHandler}
+          /> : null }
+          {/* Muestro lo que contiene la variable persons */}
+          {persons}
+        </AuthContext.Provider>
       </Aux>
     );
   }
