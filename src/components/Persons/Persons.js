@@ -24,7 +24,12 @@ class Persons extends Component {
     // de componentDidUpdate este metodo puede regresar un valor o null soi no es asi te mostrara un warning
     getSnapshotBeforeUpdate(prevProps, prevState) {
         console.log('[Persons.js] getSnapshotBeforeUpdate');
-        return {message : 'Snapshot!'};
+        // preguntar si los props son iguales
+        if(prevProps.persons !== this.props.persons) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     // componentWillMount() {
